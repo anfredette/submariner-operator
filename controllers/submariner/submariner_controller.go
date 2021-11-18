@@ -41,7 +41,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"sigs.k8s.io/controller-runtime/pkg/source"
 
-	submopv1a1 "github.com/submariner-io/submariner-operator/apis/submariner/v1alpha1"
+	submopv1a1 "github.com/submariner-io/submariner-operator/api/submariner/v1alpha1"
 	submarinerclientset "github.com/submariner-io/submariner-operator/pkg/client/clientset/versioned"
 	"github.com/submariner-io/submariner-operator/pkg/discovery/network"
 	"github.com/submariner-io/submariner-operator/pkg/gateway"
@@ -176,17 +176,17 @@ func (r *SubmarinerReconciler) Reconcile(ctx context.Context, request reconcile.
 	instance.Status.GlobalCIDR = instance.Spec.GlobalCIDR
 	instance.Status.Gateways = &gatewayStatuses
 
-	err = r.updateDaemonSetStatus(ctx, gatewayDaemonSet, &instance.Status.GatewayDaemonSetStatus, request.Namespace)
+	err = updateDaemonSetStatus(r.client, ctx, gatewayDaemonSet, &instance.Status.GatewayDaemonSetStatus, request.Namespace)
 	if err != nil {
 		reqLogger.Error(err, "failed to check gateway daemonset containers")
 		return reconcile.Result{}, err
 	}
-	err = r.updateDaemonSetStatus(ctx, routeagentDaemonSet, &instance.Status.RouteAgentDaemonSetStatus, request.Namespace)
+	err = updateDaemonSetStatus(r.client, ctx, routeagentDaemonSet, &instance.Status.RouteAgentDaemonSetStatus, request.Namespace)
 	if err != nil {
 		reqLogger.Error(err, "failed to check route agent daemonset containers")
 		return reconcile.Result{}, err
 	}
-	err = r.updateDaemonSetStatus(ctx, globalnetDaemonSet, &instance.Status.GlobalnetDaemonSetStatus, request.Namespace)
+	err = updateDaemonSetStatus(r.client, ctx, globalnetDaemonSet, &instance.Status.GlobalnetDaemonSetStatus, request.Namespace)
 	if err != nil {
 		reqLogger.Error(err, "failed to check gateway daemonset containers")
 		return reconcile.Result{}, err

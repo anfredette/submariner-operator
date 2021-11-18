@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/AlecAivazis/survey/v2 v2.2.13
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
-	github.com/aws/aws-sdk-go v1.40.54
+	github.com/aws/aws-sdk-go v1.42.4
 	github.com/coreos/go-semver v0.3.0
 	github.com/coreos/prometheus-operator v0.38.1-0.20200424145508-7e176fda06cc
 	github.com/go-errors/errors v1.2.0 // indirect
@@ -23,8 +23,8 @@ require (
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
-	github.com/onsi/ginkgo v1.16.4
-	github.com/onsi/gomega v1.16.0
+	github.com/onsi/ginkgo v1.16.5
+	github.com/onsi/gomega v1.17.0
 	github.com/openshift/api v0.0.0-20200324173355-9b3bdf846ea1
 	github.com/openshift/cluster-dns-operator v0.0.0-20200529200012-f9e4dfc90c57
 	github.com/operator-framework/operator-lib v0.4.0
@@ -33,20 +33,20 @@ require (
 	github.com/prometheus/client_golang v1.11.0
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/spf13/cobra v1.2.0
-	github.com/submariner-io/admiral v0.11.0-rc1
-	github.com/submariner-io/cloud-prepare v0.11.0-rc1
-	github.com/submariner-io/lighthouse v0.11.0-rc1
-	github.com/submariner-io/shipyard v0.11.0-rc1
-	github.com/submariner-io/submariner v0.11.0-rc1
-	github.com/submariner-io/submariner-operator/apis v0.0.0-20210817145008-861856b068a1
+	github.com/submariner-io/admiral v0.12.0-m0
+	github.com/submariner-io/cloud-prepare v0.12.0-m0.0.20211116130020-35850d4f248a
+	github.com/submariner-io/lighthouse v0.12.0-m0
+	github.com/submariner-io/shipyard v0.12.0-m0
+	github.com/submariner-io/submariner v0.12.0-m0
+	github.com/submariner-io/submariner-operator/api v0.0.0-20211116094042-78967cc133c2
 	github.com/submariner-io/submariner/pkg/apis v0.0.0-20210816153739-c8e6654e3930
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/uw-labs/lichen v0.1.4
 	github.com/xlab/treeprint v1.1.0 // indirect
 	go.starlark.net v0.0.0-20210506034541-84642328b1f0 // indirect
-	golang.org/x/oauth2 v0.0.0-20210819190943-2bc19b11175f
+	golang.org/x/oauth2 v0.0.0-20211005180243-6b3c2da341f1
 	golang.org/x/term v0.0.0-20210615171337-6886f2dfbf5b // indirect
-	google.golang.org/api v0.58.0
+	google.golang.org/api v0.60.0
 	gopkg.in/ini.v1 v1.62.0
 	k8s.io/api v0.21.0
 	k8s.io/apiextensions-apiserver v0.20.1
@@ -78,4 +78,4 @@ replace (
 )
 
 // Local packages
-replace github.com/submariner-io/submariner-operator/apis => ./apis
+replace github.com/submariner-io/submariner-operator/api => ./api

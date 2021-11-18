@@ -31,7 +31,7 @@ import (
 	"github.com/submariner-io/admiral/pkg/resource"
 	subv1 "github.com/submariner-io/submariner/pkg/apis/submariner.io/v1"
 
-	"github.com/submariner-io/submariner-operator/apis/submariner/v1alpha1"
+	"github.com/submariner-io/submariner-operator/api/submariner/v1alpha1"
 	"github.com/submariner-io/submariner-operator/pkg/subctl/cmd/utils"
 )
 
@@ -89,7 +89,7 @@ func ForBroker(submariner *v1alpha1.Submariner, serviceDisc *v1alpha1.ServiceDis
 		// Try to authorize against the submariner Cluster resource as we know the CRD should exist and the credentials
 		// should allow read access.
 		restConfig, _, err := resource.GetAuthorizedRestConfig(submariner.Spec.BrokerK8sApiServer, submariner.Spec.BrokerK8sApiServerToken,
-			submariner.Spec.BrokerK8sCA, rest.TLSClientConfig{}, schema.GroupVersionResource{
+			submariner.Spec.BrokerK8sCA, &rest.TLSClientConfig{}, schema.GroupVersionResource{
 				Group:    subv1.SchemeGroupVersion.Group,
 				Version:  subv1.SchemeGroupVersion.Version,
 				Resource: "clusters",
@@ -102,7 +102,7 @@ func ForBroker(submariner *v1alpha1.Submariner, serviceDisc *v1alpha1.ServiceDis
 		// Try to authorize against the ServiceImport resource as we know the CRD should exist and the credentials
 		// should allow read access.
 		restConfig, _, err := resource.GetAuthorizedRestConfig(serviceDisc.Spec.BrokerK8sApiServer, serviceDisc.Spec.BrokerK8sApiServerToken,
-			serviceDisc.Spec.BrokerK8sCA, rest.TLSClientConfig{}, schema.GroupVersionResource{
+			serviceDisc.Spec.BrokerK8sCA, &rest.TLSClientConfig{}, schema.GroupVersionResource{
 				Group:    "multicluster.x-k8s.io",
 				Version:  "v1alpha1",
 				Resource: "serviceimports",

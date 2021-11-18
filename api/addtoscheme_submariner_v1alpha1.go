@@ -15,11 +15,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package v1alpha1
 
-var (
-	DefaultRepo                      = "quay.io/submariner"
-	DefaultSubmarinerOperatorVersion = "0.11.0-rc1"
-	DefaultSubmarinerVersion         = "0.11.0-rc1"
-	DefaultLighthouseVersion         = "0.11.0-rc1"
+package api
+
+import (
+	"github.com/submariner-io/submariner-operator/api/submariner/v1alpha1"
 )
+
+func init() {
+	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
+	AddToSchemes = append(AddToSchemes, v1alpha1.SchemeBuilder.AddToScheme)
+}
