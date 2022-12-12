@@ -15,7 +15,7 @@ jobs:
       || ( github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'check-prometheus') )
     steps:
       - name: Check out the Shipyard repository
-        uses: actions/checkout@dcd71f646680f2efd8db4afa5ad64fdcba30e748
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
         with:
           repository: submariner-io/shipyard
 
